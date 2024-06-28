@@ -12,8 +12,8 @@ const TodoCard = () => {
             <p>Time</p>
             <p>Des</p>
             <div className="space-x-5">
-                <button></button>
-                <button></button>
+                <button className="text-white bg-red-500 px-2 py-1 rounded">Delete</button>
+                <button className="text-white bg-[#5C53FE]  px-2 py-1  rounded">Edit</button>
             </div>
         </div>
     );

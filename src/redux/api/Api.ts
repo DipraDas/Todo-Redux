@@ -31,7 +31,6 @@ export const baseApi = createApi({
         }),
         updateTodo: builder.mutation({
             query: (options) => {
-                console.log(options);
                 return {
                     url: `/task/${options.id}`,
                     method: 'PUT',

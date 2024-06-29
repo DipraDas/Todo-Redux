@@ -19,12 +19,13 @@ const TodoContainer = () => {
             </div>
             <div className="bg-blue-200 w-full h-[500px] rounded-xl p-5 space-y-3">
                 {
-                    todos?.data?.map((item: { id: string; title: string; description: string; isCompleted: boolean }) => (
+                    todos?.data?.map((item: { id: string; title: string; description: string; isCompleted: boolean, priority: string }) => (
                         <TodoCard
                             id={item.id}
                             title={item.title}
                             description={item.description}
                             isCompleted={item.isCompleted}
+                            priority={item.priority}
                         />
                     ))
                 }

@@ -8,7 +8,6 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { useState } from "react";
 
 const TodoFilter = ({ priority, setPriority }) => {
     console.log(priority)
@@ -16,7 +15,7 @@ const TodoFilter = ({ priority, setPriority }) => {
         <div>
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                    <Button variant="outline">Open</Button>
+                    <Button variant="outline">Filter</Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-56 bg-white">
                     <DropdownMenuLabel>Panel Position</DropdownMenuLabel>

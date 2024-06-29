@@ -1,19 +1,30 @@
-import { removeTodo, toggleComplete } from "@/redux/features/todoSlice";
+import { useUpdateTodoMutation } from "@/redux/api/Api";
+import { removeTodo } from "@/redux/features/todoSlice";
 import { useDispatch } from "react-redux";
 
 type TTodoCardProps = {
-    id: string;
+    _id: string;
     title: string;
     description: string;
     isCompleted?: boolean;
     priority: string
 }
 
-const TodoCard = ({ id, title, description, isCompleted, priority }: TTodoCardProps) => {
+const TodoCard = ({ _id, title, description, isCompleted, priority }: TTodoCardProps) => {
     const dispatch = useDispatch();
-
+    const [updateTodo] = useUpdateTodoMutation();
     const toggleState = () => {
-        dispatch(toggleComplete(id))
+        // dispatch(toggleComplete(id))
+        const options = {
+            id: _id,
+            data: {
+                title,
+                description,
+                priority,
+                isCompleted: !isCompleted
+            }
+        }
+        updateTodo(options);
     }
 
     return (
@@ -21,8 +32,9 @@ const TodoCard = ({ id, title, description, isCompleted, priority }: TTodoCardPr
             <input
                 onChange={toggleState}
                 type="checkbox"
-                name=""
-                id=""
+                name="complete"
+                id="complete"
+                defaultChecked={isCompleted}
             />
             <div className=" flex items-center gap-2">
                 <div
@@ -51,7 +63,7 @@ const TodoCard = ({ id, title, description, isCompleted, priority }: TTodoCardPr
             <p>Time</p>
             <p>{description}</p>
             <div className="space-x-5">
-                <button onClick={() => dispatch(removeTodo(id))} className="text-white bg-red-500 px-2 py-1 rounded">Delete</button>
+                <button onClick={() => dispatch(removeTodo(_id))} className="text-white bg-red-500 px-2 py-1 rounded">Delete</button>
                 <button className="text-white bg-[#5C53FE]  px-2 py-1  rounded">Edit</button>
             </div>
         </div>
